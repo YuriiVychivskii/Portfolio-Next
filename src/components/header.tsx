@@ -1,4 +1,5 @@
 'use client';
+import Image from 'next/image';
 import Link from 'next/link';
 import ToggleTheme from './toggle-theme';
 
@@ -8,7 +9,7 @@ export default function Header() {
 			<nav className='container flex max-w-3xl items-center justify-between'>
 				<div>
 					<Link href='/' className='font-serif text-2xl font-bold'>
-						Yurii Vychivskii
+						<Image src='/images/logo.png' alt='' width={30} height={30} />
 					</Link>
 				</div>
 
