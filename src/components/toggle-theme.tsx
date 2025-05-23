@@ -18,6 +18,7 @@ export default function ToggleTheme() {
 			size='sm'
 			variant='ghost'
 			onClick={() => setTheme(resolvedTheme === 'dark' ? 'light' : 'dark')}
+			className='w-9 h-9'
 		>
 			{resolvedTheme === 'dark' ? (
 				<SunIcon className='size-4 text-orange-300' />
