@@ -1,6 +1,7 @@
 'use client';
 import Image from 'next/image';
 import Link from 'next/link';
+import ToggleLocale from './toggle-locale';
 import ToggleTheme from './toggle-theme';
 
 export default function Header() {
@@ -25,8 +26,9 @@ export default function Header() {
 					</li>
 				</ul>
 
-				<div>
+				<div className='flex items-center'>
 					<ToggleTheme />
+					<ToggleLocale />
 				</div>
 			</nav>
 		</header>
