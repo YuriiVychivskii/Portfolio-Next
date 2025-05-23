@@ -1,9 +1,12 @@
 import Footer from '@/components/footer';
 import Header from '@/components/header';
 import Providers from '@/components/providers';
+import { routing } from '@/i18n/routing';
 import { cn } from '@/lib/utils';
 import type { Metadata } from 'next';
+import { hasLocale, NextIntlClientProvider } from 'next-intl';
 import { Inter, Playfair_Display } from 'next/font/google';
+import { notFound } from 'next/navigation';
 import './globals.css';
 
 const inter = Inter({
@@ -22,13 +25,19 @@ export const metadata: Metadata = {
 	icons: '/images/logo.png',
 };
 
-export default function RootLayout({
+export default async function LocaleLayout({
 	children,
-}: Readonly<{
+	params,
+}: {
 	children: React.ReactNode;
-}>) {
+	params: Promise<{ locale: string }>;
+}) {
+	const { locale } = await params;
+	if (!hasLocale(routing.locales, locale)) {
+		notFound();
+	}
 	return (
-		<html lang='en' suppressHydrationWarning>
+		<html lang={locale} suppressHydrationWarning>
 			<body
 				className={cn(
 					'flex min-h-screen font-sans antialiased',
@@ -38,9 +47,11 @@ export default function RootLayout({
 				)}
 			>
 				<Providers>
-					<Header />
-					<main className='grow'>{children}</main>
-					<Footer />
+					<NextIntlClientProvider>
+						<Header />
+						<main className='grow'>{children}</main>
+						<Footer />
+					</NextIntlClientProvider>
 				</Providers>
 			</body>
 		</html>
