@@ -1,36 +1,106 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
-## Getting Started
+# 🧑‍💻 Portfolio — Yurii Vychivskii
 
-First, run the development server:
+A personal portfolio website built with **Next.js**, showcasing my projects, skills, experience, and contact information.  
+Designed to be fast, responsive, and developer-friendly.
+
+---
+
+## 🌍 Live Website
+
+> [https://your-portfolio-link.com](https://your-portfolio-link.com)  
+> _(Replace with your actual deployed URL)_
+
+---
+
+## ✨ Features
+
+- Clean and modern UI
+- Responsive layout for all devices
+- Dark/light mode toggle (if applicable)
+- Project showcase section
+- About me and skills sections
+- Contact form or social links
+- SEO optimized (meta tags, Open Graph)
+
+---
+
+## 🛠️ Tech Stack
+
+- **Next.js 14+ / App Router**
+- **React**
+- **Tailwind CSS** 
+- **TypeScript** 
+- **Resend** (for contact form, optional)
+- **Hostinger** for deployment
+
+---
+
+## 📦 Getting Started
+
+### ✅ Prerequisites
+
+- Node.js >= 16.x
+- npm or yarn
+
+### 📥 Installation
+
+```bash
+git clone https://github.com/YuriiVychivskii/portfolio-next.git
+cd portfolio-next
+npm install
+# or
+yarn install
+````
+
+### 🚀 Run Locally
 
 ```bash
 npm run dev
 # or
 yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Visit [http://localhost:3000](http://localhost:3000)
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+---
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 📁 Folder Structure (Next.js App Router)
 
-## Learn More
+```
+portfolio-next/
+├── public/               # Static assets
+├── app/                  # App directory (routing, layouts, pages)
+│   ├── layout.tsx        # Root layout
+│   ├── page.tsx          # Home page
+│   └── ...               # Other pages like /projects, /about, /contact
+├── components/           # Reusable UI components
+├── styles/               # Global and modular styles
+├── types/                # TypeScript types (if used)
+├── lib/                  # Utilities or helpers
+├── package.json
+└── README.md
+```
 
-To learn more about Next.js, take a look at the following resources:
+---
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 📄 License
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+This project is open-source and available for personal or commercial use.
+Feel free to fork and modify it for your own portfolio.
 
-## Deploy on Vercel
+---
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## 🙋‍♂️ Author
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+* Name: **Yurii Vychivskii**
+* GitHub: [@YuriiVychivskii](https://github.com/YuriiVychivskii)
+* LinkedIn: [linkedin.com/in/yurii-vychivskii](https://www.linkedin.com/in/yurii-vychivskii)
+
+---
+
+## ⭐️ Support
+
+If you like this project, please consider giving it a ⭐️
+Thank you for checking out my portfolio!
+`
