@@ -1,0 +1,73 @@
+---
+title: 'My Stack in 2025: How I Build Frontend'
+summary: "My current set of technologies for building web apps — from React and Next.js to Tailwind, Redux, and JWT. In this post, I'll share what I use in my projects, why I chose these tools, and what I plan to learn next."
+author: Yurii Vychivskii
+publishedAt: '2025-05-19'
+slug: my-stack
+---
+
+Over the past year, my development approach has evolved a lot. Before, I just looked for “whatever works”, but now I think more about **architecture, scalability, and user experience**. In this post, I’ll walk you through the technologies I use in my pet projects — especially Nimble, a subscription management service.
+
+---
+
+## ⚙️ Frontend
+
+### **React**
+
+> The library where it all began.
+
+I’ve been writing React since 2023. I like its component-based approach and the ecosystem. I'm comfortable working with hooks, context, portals, `useReducer`, and more.
+
+### **Next.js 14+ (App Router)**
+
+> A modern framework with everything out of the box.
+
+I switched to the App Router — it gives me SSR, SSG, API routes, layouts, and parallel rendering. I'm also learning newer features like `useOptimistic`, `server actions`, etc. I keep my `app` folder clean and organized.
+
+### **Tailwind CSS**
+
+> I write styles faster than I ever did with SCSS.
+
+Tailwind has replaced Bootstrap and even plain CSS for me. I create custom UI components, follow a consistent style, and make everything responsive from the start. I also use Tailwind plugins like `@tailwind/forms` and `@tailwind/typography`.
+
+### **SCSS (occasionally)**
+
+> For highly customized styles or when I need variables.
+
+---
+
+## 🧠 State Management
+
+### **Redux Toolkit**
+
+> When I need centralized state management.
+
+I use `createSlice`, `createAsyncThunk`, and `RTK Query` for API calls. I’ve also learned not to overengineer things — I don’t bring in Redux unless it’s truly needed.
+
+### **Zustand (planned)**
+
+> I’d like to try it for lighter use cases.
+
+---
+
+## 🔐 Authentication
+
+### **NextAuth + Credentials + Google OAuth**
+
+> I add login via email and Google account.
+
+I’ve customized `signIn`, `signOut`, and built my own MongoDB backend. In the future, I plan to add user roles.
+
+### **JWT**
+
+> A standardized and reliable way to handle auth.
+
+I store tokens in `httpOnly` cookies — it’s safer than using localStorage.
+
+---
+
+## 🧰 Other Tools
+
+- **Axios** — for API requests (with a basic interceptor setup).
+- **ESLint + Prettier** — for auto-formatting and consistent code style.
+- **Git + GitHub** — my version control and collaboration workflow.
