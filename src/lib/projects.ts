@@ -2,8 +2,6 @@ import fs from 'fs';
 import matter from 'gray-matter';
 import path from 'path';
 
-const rootDirectory = path.join(process.cwd(), 'content', 'projects');
-
 export type Project = {
 	metadata: ProjectMetadata;
 	content: string;
@@ -18,8 +16,16 @@ export type ProjectMetadata = {
 	slug?: string;
 };
 
-export async function getProjectBySlug(slug: string): Promise<Project | null> {
+function getRootDirectory(locale: string) {
+	return path.join(process.cwd(), 'content', locale as string, 'projects');
+}
+
+export async function getProjectBySlug(
+	locale: string,
+	slug: string
+): Promise<Project | null> {
 	try {
+		const rootDirectory = getRootDirectory(locale);
 		const filePath = path.join(rootDirectory, `${slug}.mdx`);
 		const fileContent = fs.readFileSync(filePath, { encoding: 'utf-8' });
 		const { data, content } = matter(fileContent);
@@ -33,11 +39,15 @@ export async function getProjectBySlug(slug: string): Promise<Project | null> {
 	}
 }
 
-export async function getProjects(limit?: number): Promise<ProjectMetadata[]> {
+export async function getProjects(
+	locale: string,
+	limit?: number
+): Promise<ProjectMetadata[]> {
+	const rootDirectory = getRootDirectory(locale);
 	const files = fs.readdirSync(rootDirectory);
 
 	const projects = await Promise.all(
-		files.map(async file => await getProjectMetadata(file))
+		files.map(async file => await getProjectMetadata(locale, file))
 	);
 
 	projects.sort((a, b) => {
@@ -54,8 +64,10 @@ export async function getProjects(limit?: number): Promise<ProjectMetadata[]> {
 }
 
 export async function getProjectMetadata(
+	locale: string,
 	filepath: string
 ): Promise<ProjectMetadata> {
+	const rootDirectory = getRootDirectory(locale);
 	const slug = filepath.replace(/\.mdx$/, '');
 	const filePath = path.join(rootDirectory, filepath);
 	const fileContent = fs.readFileSync(filePath, { encoding: 'utf8' });
