@@ -1,0 +1,56 @@
+{
+	"Main": {
+		"posts": "Posts",
+		"projects": "Projects",
+		"contact": "Contact",
+		"backToProjects": "Back to projects",
+		"backToPosts": "Bact to posts"
+	},
+	"Intro": {
+		"title": "Hey, I’m Yurii.",
+		"content": "I'm a Junior Frontend Developer based in Ivano-Frankivsk, Ukraine. I specialize in building modern, responsive web interfaces using React, Next.js, and TypeScript."
+	},
+	"RecentPosts": {
+		"title": "Recent posts",
+		"all": "All posts"
+	},
+	"RecentProjects": {
+		"title": "Recent projects",
+		"all": "All projects"
+	},
+	"NewsletterForm": {
+		"heading": "Subscribe to my newsletter",
+		"description": "Get updates on my work and projects.",
+		"emailPlaceholder": "Enter your email",
+		"buttonSubscribe": "Subscribe",
+		"buttonSubmitting": "Submitting...",
+		"successMessage": "Subscribed successfully!",
+		"errorMessage": "An error occurred! Please try again.",
+		"privacyText": "We care about your data. Read our",
+		"privacyLink": "privacy\u00A0policy."
+	},
+	"Schema": {
+		"requiredEmail": "Email is required",
+		"invalidEmail": "Please enter a valid email address",
+		"requiredChar": "Must be at least 2 characters",
+		"requiredName": "Name is required",
+		"requiredMessage": "Message is required"
+	},
+	"PostsWithSearch": {
+		"placeholder": "Search posts...",
+		"reset": "Reset"
+	},
+	"ContactForm": {
+		"successMessage": "Message send successfully!",
+		"errorMessage": "An error occurred! Please try again.",
+		"name": "Name",
+		"message": "Message",
+		"submitting": "Submitting...",
+		"contact": "Contact Us",
+		"privacyText": "By submitting this form, I agree to the",
+		"privacyLink": "privacy\u00A0policy."
+	},
+	"ContactPage": {
+		"title": "Let's talk about your project"
+	}
+}

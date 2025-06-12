@@ -1,0 +1,56 @@
+{
+	"Main": {
+		"posts": "Дописи",
+		"projects": "Проєкти",
+		"contact": "Контакти",
+		"backToProjects": "Повернутись до проєктів",
+		"backToPosts": "Повернутись до дописів"
+	},
+	"Intro": {
+		"title": "Привіт, я Юрій.",
+		"content": "Я Junior Frontend Developer з Івано-Франківська, Україна. Спеціалізуюсь на створенні сучасних, адаптивних вебінтерфейсів за допомогою React, Next.js та TypeScript."
+	},
+	"RecentPosts": {
+		"title": "Останні дописи",
+		"all": "Усі дописи"
+	},
+	"RecentProjects": {
+		"title": "Останні проекти",
+		"all": "Усі проекти"
+	},
+	"NewsletterForm": {
+		"heading": "Підпишіться на розсилку",
+		"description": "Отримуйте оновлення про мої роботи та проєкти.",
+		"emailPlaceholder": "Введіть свою електронну пошту",
+		"buttonSubscribe": "Підписатися",
+		"buttonSubmitting": "Надсилання...",
+		"successMessage": "Успішно підписано!",
+		"errorMessage": "Сталася помилка! Спробуйте ще раз.",
+		"privacyText": "Ми дбаємо про ваші дані. Ознайомтеся з нашою",
+		"privacyLink": "політикою\u00A0конфіденційності."
+	},
+	"Schema": {
+		"requiredEmail": "Обов’язково вкажіть email",
+		"invalidEmail": "Введіть дійсну email-адресу",
+		"requiredChar": "Має містити щонайменше 2 символи",
+		"requiredName": "Ім’я є обов’язковим",
+		"requiredMessage": "Повідомлення є обов’язковим"
+	},
+	"PostsWithSearch": {
+		"placeholder": "Пошук дописів...",
+		"reset": "Скинути"
+	},
+	"ContactForm": {
+		"successMessage": "Повідомлення успішно надіслано!",
+		"errorMessage": "Сталася помилка! Спробуйте ще раз.",
+		"name": "Ім'я",
+		"message": "Повідомлення",
+		"submitting": "Надсилання...",
+		"contact": "Зв'язатися з нами",
+		"privacyText": "Надсилаючи цю форму, я погоджуюсь з",
+		"privacyLink": "політикою\u00A0конфіденційності."
+	},
+	"ContactPage": {
+		"title": "Маєте ідею? Давайте обговоримо!"
+	}
+}
