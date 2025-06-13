@@ -1,9 +1,10 @@
 'use client';
 
+import { Link } from '@/i18n/navigation';
 import { sendEmail } from '@/lib/actions';
 import { ContactFormSchema } from '@/lib/schemas';
 import { zodResolver } from '@hookform/resolvers/zod';
-import Link from 'next/link';
+import { useTranslations } from 'next-intl';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { toast } from 'sonner';
 import { z } from 'zod';
@@ -28,15 +29,18 @@ export default function ContactForm() {
 		},
 	});
 
+	const tSchema = useTranslations('Schema');
+	const t = useTranslations('ContactForm');
+
 	const processForm: SubmitHandler<Inputs> = async data => {
 		const result = await sendEmail(data);
 
 		if (result?.error) {
-			toast.error('An error occurred! Please try again.');
+			toast.error(t('errorMessage'));
 			return;
 		}
 
-		toast.success('Message send successfully!');
+		toast.success(t('successMessage'));
 		reset();
 	};
 
@@ -52,38 +56,46 @@ export default function ContactForm() {
 							<Input
 								id='name'
 								type='text'
-								placeholder='Name'
+								placeholder={t('name')}
 								autoComplete='given-name'
 								{...register('name')}
 							/>
 
 							{errors.name?.message && (
 								<p className='ml-1 mt-2 text-sm text-rose-400'>
-									{errors.name.message}
+									{tSchema(errors.name.message)}
 								</p>
 							)}
 						</div>
 
-						<Input
-							id='email'
-							type='text'
-							placeholder='Email'
-							autoComplete='email'
-							{...register('email')}
-						/>
+						<div>
+							<Input
+								id='email'
+								type='text'
+								placeholder='Email'
+								autoComplete='email'
+								{...register('email')}
+							/>
 
-						{errors.email?.message && (
-							<p className='ml-1 mt-2 text-sm text-rose-400'>
-								{errors.email.message}
-							</p>
-						)}
+							{errors.email?.message && (
+								<p className='ml-1 mt-2 text-sm text-rose-400'>
+									{tSchema(errors.email.message)}
+								</p>
+							)}
+						</div>
 					</div>
+
 					<div className='mt-6'>
-						<Textarea rows={4} placeholder='Message' {...register('message')} />
+						<Textarea
+							id='textarea'
+							rows={4}
+							placeholder={t('message')}
+							{...register('message')}
+						/>
 
 						{errors.message?.message && (
 							<p className='ml-1 mt-2 text-sm text-rose-400'>
-								{errors.message.message}
+								{tSchema(errors.message.message)}
 							</p>
 						)}
 					</div>
@@ -94,14 +106,14 @@ export default function ContactForm() {
 							disabled={isSubmitting}
 							className='w-full disabled:opacity-50'
 						>
-							{isSubmitting ? 'Submitting...' : 'Contact Us'}
+							{isSubmitting ? t('submitting') : t('contact')}
 						</Button>
 					</div>
 
 					<p className='mt-4 text-muted-foreground text-xs'>
-						By submitting this form, I agree to the{' '}
+						{t('privacyText')}{' '}
 						<Link href='/privacy' className='font-bold'>
-							privacy&nbsp;policy.
+							{t('privacyLink')}
 						</Link>
 					</p>
 				</form>

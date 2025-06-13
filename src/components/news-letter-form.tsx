@@ -1,9 +1,10 @@
 'use client';
 
+import { Link } from '@/i18n/navigation';
 import { subscribe } from '@/lib/actions';
 import { NewsletterFormSchema } from '@/lib/schemas';
 import { zodResolver } from '@hookform/resolvers/zod';
-import Link from 'next/link';
+import { useTranslations } from 'next-intl';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { toast } from 'sonner';
 import { z } from 'zod';
@@ -26,15 +27,18 @@ export default function NewsLetterForm() {
 		},
 	});
 
+	const t = useTranslations('NewsletterForm');
+
 	const processForm: SubmitHandler<Inputs> = async data => {
 		const result = await subscribe(data);
 
 		if (result?.error) {
-			toast.error('An error occurred! Please try again.');
+			toast.error(t('errorMessage'));
 			return;
 		}
 
-		toast.success('Subscribed successfully!');
+		toast.success(t('successMessage'));
+		reset();
 	};
 
 	return (
@@ -42,10 +46,8 @@ export default function NewsLetterForm() {
 			<Card className='rounded-lg border-0 dark:border'>
 				<CardContent className='flex flex-col gap-8 pt-6 md:flex-row md:justify-center'>
 					<div>
-						<h2 className='text-2xl font-bold'>Subscribe to my newsletter</h2>
-						<p className='text-muted-foreground'>
-							Get updates on my work and projects.
-						</p>
+						<h2 className='text-2xl font-bold'>{t('heading')}</h2>
+						<p className='text-muted-foreground mt-3'>{t('description')}</p>
 					</div>
 
 					<form
@@ -74,14 +76,14 @@ export default function NewsLetterForm() {
 								disabled={isSubmitting}
 								className='w-full disabled:opacity-50'
 							>
-								{isSubmitting ? 'Submitting...' : 'Subscribe'}
+								{isSubmitting ? t('buttonSubmitting') : t('buttonSubscribe')}
 							</Button>
 						</div>
 						<div>
 							<p className='text-xs text-muted-foreground'>
-								We care about your data. Read our{' '}
+								{t('privacyText')}{' '}
 								<Link href='/privacy' className='font-bold'>
-									privacy&nbsp;policy.
+									{t('privacyLink')}
 								</Link>
 							</p>
 						</div>

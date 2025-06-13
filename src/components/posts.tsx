@@ -1,10 +1,14 @@
+import { Link } from '@/i18n/navigation';
 import { PostMetadata } from '@/lib/posts';
 import { formatDate } from '@/lib/utils';
-import Link from 'next/link';
 
-export default function Posts({ posts }: { posts: PostMetadata[] }) {
-	console.log(posts);
-
+export default function Posts({
+	posts,
+	locale,
+}: {
+	posts: PostMetadata[];
+	locale: string;
+}) {
 	return (
 		<ul className='flex flex-col gap-8'>
 			{posts.map(post => (
@@ -22,7 +26,7 @@ export default function Posts({ posts }: { posts: PostMetadata[] }) {
 
 						{post.publishedAt && (
 							<p className='mt-1 text-sm font-light'>
-								{formatDate(post.publishedAt)}
+								{formatDate(post.publishedAt, locale)}
 							</p>
 						)}
 					</Link>
