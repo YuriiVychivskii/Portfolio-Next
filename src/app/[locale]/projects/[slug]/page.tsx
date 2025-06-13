@@ -7,11 +7,9 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 
-export default async function Projects({
-	params,
-}: {
-	params: { slug: string; locale: string };
-}) {
+type Params = Promise<{ slug: string; locale: string }>;
+
+export default async function Projects({ params }: { params: Params }) {
 	const { slug, locale } = await params;
 	const project = await getProjectBySlug(locale, slug);
 	const t = await getTranslations('Main');

@@ -3,7 +3,9 @@ import NewsLetterForm from '@/components/news-letter-form';
 import RecentPosts from '@/components/recent-posts';
 import RecentProjects from '@/components/recent-projects';
 
-export default async function Home({ params }: { params: { locale: string } }) {
+type Params = Promise<{ locale: string }>;
+
+export default async function Home({ params }: { params: Params }) {
 	const { locale } = await params;
 	return (
 		<section className='py-24'>

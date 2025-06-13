@@ -2,11 +2,9 @@ import Projects from '@/components/projects';
 import { getProjects } from '@/lib/projects';
 import { getTranslations } from 'next-intl/server';
 
-export default async function ProjectsPage({
-	params,
-}: {
-	params: { locale: string };
-}) {
+type Params = Promise<{ locale: string }>;
+
+export default async function ProjectsPage({ params }: { params: Params }) {
 	const { locale } = await params;
 	const projects = await getProjects(locale);
 	const showProjects = !!projects.length;

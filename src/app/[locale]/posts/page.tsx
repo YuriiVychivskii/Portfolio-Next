@@ -2,11 +2,9 @@ import PostsWithSearch from '@/components/posts-with-search';
 import { getPosts } from '@/lib/posts';
 import { getTranslations } from 'next-intl/server';
 
-export default async function PostsPage({
-	params,
-}: {
-	params: { locale: string };
-}) {
+type Params = Promise<{ locale: string }>;
+
+export default async function PostsPage({ params }: { params: Params }) {
 	const { locale } = await params;
 	const posts = await getPosts(locale);
 	const t = await getTranslations('Main');
