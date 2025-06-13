@@ -1,8 +1,7 @@
 'use client';
 
-import { usePathname } from '@/i18n/navigation';
+import { usePathname, useRouter } from '@/i18n/navigation';
 import { useLocale } from 'next-intl';
-import { useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import { Button } from './ui/button';
 
@@ -19,19 +18,12 @@ export default function ToggleLocale() {
 	const switchLocale = locale === 'en' ? 'ua' : 'en';
 
 	const handleClick = () => {
-		const newPath = `/${switchLocale}${pathname.substring(3)}`;
-		router.replace(newPath);
+		router.replace(pathname, { locale: switchLocale });
 	};
 
 	return (
-		<Button
-			size='sm'
-			variant='ghost'
-			onClick={() => handleClick()}
-			className='w-9 h-9'
-		>
+		<Button size='sm' variant='ghost' onClick={handleClick} className='w-9 h-9'>
 			{locale.toUpperCase()}
-
 			<span className='sr-only'>Toggle language</span>
 		</Button>
 	);
