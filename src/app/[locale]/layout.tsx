@@ -1,4 +1,3 @@
-import Footer from '@/components/footer';
 import Header from '@/components/header';
 import Providers from '@/components/providers';
 import { routing } from '@/i18n/routing';
@@ -50,7 +49,6 @@ export default async function LocaleLayout({
 					<NextIntlClientProvider>
 						<Header />
 						<main className='grow'>{children}</main>
-						<Footer />
 					</NextIntlClientProvider>
 				</Providers>
 			</body>
