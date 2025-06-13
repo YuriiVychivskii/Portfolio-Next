@@ -1,15 +1,22 @@
 import { getPostsBySlug } from '@/lib/posts';
 import { formatDate } from '@/lib/utils';
 import { ArrowLeftIcon } from 'lucide-react';
+import { getTranslations } from 'next-intl/server';
 import { MDXRemote } from 'next-mdx-remote/rsc';
 import Image from 'next/image';
 import Link from 'next/link';
+import { notFound } from 'next/navigation';
 
-export default async function Post({ params }: { params: { slug: string } }) {
-	const { slug } = params;
-	const post = await getPostsBySlug(slug);
+export default async function Post({
+	params,
+}: {
+	params: { slug: string; locale: string };
+}) {
+	const { slug, locale } = await params;
+	const post = await getPostsBySlug(locale, slug);
+	const t = await getTranslations('Main');
 
-	if (!post) return <div>Post not found</div>;
+	if (!post) notFound();
 
 	const { metadata, content } = post;
 	const { title, image, author, publishedAt } = metadata;
@@ -22,7 +29,7 @@ export default async function Post({ params }: { params: { slug: string } }) {
 					className='mb-8 inline-flex items-center gap-2 text-sm font-light '
 				>
 					<ArrowLeftIcon className='h-5 w-5' />
-					<span>Back to posts</span>
+					<span>{t('backToPosts')}</span>
 				</Link>
 
 				{image && (
@@ -39,7 +46,7 @@ export default async function Post({ params }: { params: { slug: string } }) {
 				<header>
 					<h1 className='title'>{title}</h1>
 					<p className='mt-3 text-xs text-muted-foreground'>
-						{author}/{formatDate(publishedAt ?? '')}
+						{author}/{formatDate(publishedAt ?? '', locale)}
 					</p>
 				</header>
 

@@ -1,13 +1,20 @@
 import PostsWithSearch from '@/components/posts-with-search';
 import { getPosts } from '@/lib/posts';
+import { getTranslations } from 'next-intl/server';
 
-export default async function PostsPage() {
-	const posts = await getPosts();
+export default async function PostsPage({
+	params,
+}: {
+	params: { locale: string };
+}) {
+	const { locale } = await params;
+	const posts = await getPosts(locale);
+	const t = await getTranslations('Main');
 
 	return (
 		<section className='pb-24 pt-40'>
 			<div className='container max-w-3xl'>
-				<h1 className='title mb-12'>Posts</h1>
+				<h1 className='title mb-12'>{t('posts')}</h1>
 
 				<PostsWithSearch posts={posts} />
 			</div>

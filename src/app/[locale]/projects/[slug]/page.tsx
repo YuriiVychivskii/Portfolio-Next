@@ -1,26 +1,20 @@
-import { getProjectBySlug, getProjects } from '@/lib/projects';
+import { getProjectBySlug } from '@/lib/projects';
 import { formatDate } from '@/lib/utils';
 import { ArrowLeftIcon } from 'lucide-react';
+import { getTranslations } from 'next-intl/server';
+import { MDXRemote } from 'next-mdx-remote/rsc';
 import Image from 'next/image';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 
-export async function generateStaticParams() {
-	const projects = await getProjects();
-	const slugs = projects.map(project => ({
-		slug: project.slug,
-	}));
-
-	return slugs;
-}
-
 export default async function Projects({
 	params,
 }: {
-	params: { slug: string };
+	params: { slug: string; locale: string };
 }) {
-	const { slug } = params;
-	const project = await getProjectBySlug(slug);
+	const { slug, locale } = await params;
+	const project = await getProjectBySlug(locale, slug);
+	const t = await getTranslations('Main');
 
 	if (!project) notFound();
 
@@ -35,7 +29,7 @@ export default async function Projects({
 					className='mb-8 inline-flex items-center gap-2 text-sm font-light '
 				>
 					<ArrowLeftIcon className='h-5 w-5' />
-					<span>Back to projects</span>
+					<span>{t('backToProjects')}</span>
 				</Link>
 
 				{image && (
@@ -44,6 +38,7 @@ export default async function Projects({
 							src={image}
 							alt={title || ''}
 							className='object-cover'
+							sizes='(min-width: 640px) 50vw, 100vw'
 							fill
 						></Image>
 					</div>
@@ -52,12 +47,12 @@ export default async function Projects({
 				<header>
 					<h1 className='title'>{title}</h1>
 					<p className='mt-3 text-xs text-muted-foreground'>
-						{author}/{formatDate(publishedAt ?? '')}
+						{author}/{formatDate(publishedAt ?? '', locale)}
 					</p>
 				</header>
 
 				<main className='prose dark:prose-invert mt-16'>
-					{/* <MDXRemote source={content} /> */}
+					{<MDXRemote source={content} />}
 				</main>
 			</div>
 		</section>
